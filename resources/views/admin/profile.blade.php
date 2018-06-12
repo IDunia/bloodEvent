@@ -5,6 +5,7 @@
 	<title>Admin Profile</title>
 	</head>
 <body>
+
 @extends('layouts.navbar_admin')
 @section('content')
 <div class="content-wrapper">
@@ -94,32 +95,37 @@
 					</div>
 
                     <div class="tab-pane" id="password">
-                         <form class="form-horizontal">
+                        
+                         <form class="form-horizontal" method="post" id="passwordForm">
+                            {{csrf_field()}}
+                              <span id="form_output_password"> </span>
                             <div class="form-group">
-                            <span id="form_output_password"/></span>
+                           
                             <label class="col-sm-2 control-label">Old Password</label>
                              <div class="col-sm-10">
-                              <input type="password" class="form-control" id="old_password" name="old_password">
+                              <input type="password" class="form-control" id="old_password" name="old_password" >
                             </div>
                             </div>
 
                             <div class="form-group">
                             <label class="col-sm-2 control-label">New Password</label>
                              <div class="col-sm-10">
-                              <input type="password" class="form-control" id="new_password" name="new_password">
+                              <input type="password" class="form-control" id="new_password" name="new_password" >
                             </div>
                             </div>
 
                             <div class="form-group">
                             <label class="col-sm-2 control-label">Confirm New Password</label>
                              <div class="col-sm-10">
-                              <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                              <input type="password" class="form-control" id="confirm_password" name="confirm_password" >
                             </div>
                             </div>
                             
                             <div class="form-group">
                              <div class="col-sm-offset-2 col-sm-10">
-                              <input type="submit" class="btn btn-success" id="change_password" name="change_password" value="Change Password">
+                            <input type="hidden" name="users_id_password" id="users_id_password" value="{{Auth::user()->id}}" />
+                             <input type="hidden" name="button_action_password" id="button_action_password" value="Change"/>
+                              <input type="submit" class="btn btn-success" id="change_password" name="change_password" value="Change">
                             </div>
                             </div>
                         </form>
@@ -258,143 +264,143 @@
  <script type="text/javascript">   
  	 $(document).ready(function(){
 
- 	 	$('#change_picture').click(function()
- 	 	{
-                                $('#uploadModal').modal('show');
-                                $('#uploadForm')[0].reset();
-                                $('#form_output').html('');
-                                $('#button_action_upload').val('insert');
-                                $('#action_upload').val('Change');
-        });
-        $('#uploadForm').on('submit', function(event){
-                                event.preventDefault();
-                                var form_data = new FormData(this);
-                                $.ajax({
+$('#change_picture').click(function()
+{
+                $('#uploadModal').modal('show');
+                $('#uploadForm')[0].reset();
+                $('#form_output').html('');
+                $('#button_action_upload').val('insert');
+                $('#action_upload').val('Change');
+});
+$('#uploadForm').on('submit', function(event){
+                event.preventDefault();
+                var form_data = new FormData(this);
+                $.ajax({
 
-                                    url:"{{ route('admin.upload') }}",
-                                    method:"POST",
-                                    data:form_data,
-                                    dataType:"json",
-                                    processData: false,
-                                    contentType:false,
-                                    success:function(data)
-                                    {
-                                        if(data.error.length > 0)
-                                        {
-                                            var error_html = '';
-                                            for(var count = 0; count < data.error.length; count++)
-                                            {
-                                                error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
-                                            }
-                                            $('#form_output').html(error_html);
-                                        }
-                                        else
-                                        {
-                                            $('#form_output').html(data.success);
-                                            $('#uploadForm')[0].reset();
-                                            $('#action_upload').val('Change');
-                                            $('.modal-title').text('Change Profile Picture');
-                                            $('#button_action_upload').val('insert');
-                                            window.location.reload();
-                                        }
-                                    }
-                                        })
-                                });
+                    url:"{{ route('admin.upload') }}",
+                    method:"POST",
+                    data:form_data,
+                    dataType:"json",
+                    processData: false,
+                    contentType:false,
+                    success:function(data)
+                    {
+                        if(data.error.length > 0)
+                        {
+                            var error_html = '';
+                            for(var count = 0; count < data.error.length; count++)
+                            {
+                                error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
+                            }
+                            $('#form_output').html(error_html);
+                        }
+                        else
+                        {
+                            $('#form_output').html(data.success);
+                            $('#uploadForm')[0].reset();
+                            $('#action_upload').val('Change');
+                            $('.modal-title').text('Change Profile Picture');
+                            $('#button_action_upload').val('insert');
+                            window.location.reload();
+                        }
+                    }
+                        })
+                });
 
-        $('#change_info').click(function()
- 	 	{						 $('#infoModal').modal('show');
-                                $('#updateForm')[0].reset();
-                                $('#form_output2').html('');
-                                $('#button_action_info').val('update');
+$('#change_info').click(function()
+	{						 $('#infoModal').modal('show');
+                    $('#updateForm')[0].reset();
+                    $('#form_output2').html('');
+                    $('#button_action_info').val('update');
+                    $('#action_info').val('Change');
+});
+$('#updateForm').on('submit', function(event){
+						event.preventDefault();
+                    var form_data = new FormData(this);
+                    $.ajax({
+
+                        url:"{{ route('admin.update') }}",
+                        method:"POST",
+                        data:form_data,
+                        dataType:"json",
+                        processData: false,
+                        contentType:false,
+                        success:function(data)
+                        {
+                            if(data.error.length > 0)
+                            {
+                                var error_html = '';
+                                for(var count = 0; count < data.error.length; count++)
+                                {
+                                    error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
+                                }
+                                $('#form_output2').html(error_html);
+                            }
+                            else
+                            {
+                                $('#first_name').val(data.first_name);
+                                $('#surname').val(data.surname);
+                                $('#gender').val(data.gender);
+                                $('#birthday').val(data.birthday);
+                                $('#occupation').val(data.occupation);
+                                $('#phone').val(data.phone);
                                 $('#action_info').val('Change');
-        });
-         $('#updateForm').on('submit', function(event){
-         						event.preventDefault();
-                                var form_data = new FormData(this);
-                                $.ajax({
+                                $('.modal-title').text('Update Information');
+                                $('#button_action_info').val('update');
+                                $('#form_output2').html(data.success);
+                                window.location.reload();
+                            }
+                        }
+                            })
+                    });
 
-                                    url:"{{ route('admin.update') }}",
-                                    method:"POST",
-                                    data:form_data,
-                                    dataType:"json",
-                                    processData: false,
-                                    contentType:false,
-                                    success:function(data)
+$('#change_email').click(function()
+{             
+     $('#emailModal').modal('show');
+                        $('#emailForm')[0].reset();
+                        $('#form_output_email').html('');
+                        $('#button_action_email').val('update');
+                        $('#action_email').val('Update');
+});
+$('#emailForm').on('submit', function(event){
+                        event.preventDefault();
+                        var form_data = new FormData(this);
+                        $.ajax({
+
+                            url:"{{ route('admin.email') }}",
+                            method:"POST",
+                            data:form_data,
+                            dataType:"json",
+                            processData: false,
+                            contentType:false,
+                            success:function(data)
+                            {
+                                if(data.error.length > 0)
+                                {
+                                    var error_html = '';
+                                    for(var count = 0; count < data.error.length; count++)
                                     {
-                                        if(data.error.length > 0)
-                                        {
-                                            var error_html = '';
-                                            for(var count = 0; count < data.error.length; count++)
-                                            {
-                                                error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
-                                            }
-                                            $('#form_output2').html(error_html);
-                                        }
-                                        else
-                                        {
-                                            $('#first_name').val(data.first_name);
-                                            $('#surname').val(data.surname);
-                                            $('#gender').val(data.gender);
-                                            $('#birthday').val(data.birthday);
-                                            $('#occupation').val(data.occupation);
-                                            $('#phone').val(data.phone);
-                                            $('#action_info').val('Change');
-                                            $('.modal-title').text('Update Information');
-                                            $('#button_action_info').val('update');
-                                            $('#form_output2').html(data.success);
-                                            window.location.reload();
-                                        }
+                                        error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
                                     }
-                                        })
-                                });
-
-    $('#change_email').click(function()
-        {             
-             $('#emailModal').modal('show');
-                                $('#emailForm')[0].reset();
-                                $('#form_output_email').html('');
-                                $('#button_action_email').val('update');
-                                $('#action_email').val('Update');
-        });
-    $('#emailForm').on('submit', function(event){
-                                event.preventDefault();
-                                var form_data = new FormData(this);
-                                $.ajax({
-
-                                    url:"{{ route('admin.email') }}",
-                                    method:"POST",
-                                    data:form_data,
-                                    dataType:"json",
-                                    processData: false,
-                                    contentType:false,
-                                    success:function(data)
-                                    {
-                                        if(data.error.length > 0)
-                                        {
-                                            var error_html = '';
-                                            for(var count = 0; count < data.error.length; count++)
-                                            {
-                                                error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
-                                            }
-                                            $('#form_output_email').html(error_html);
+                                    $('#form_output_email').html(error_html);
+                                }
+                                else
+                                {
+                                    $('#form_output_email').html(data.success);
+                                    if(data.success == '<div class="alert alert-danger">Wrong Password !</div>'){
+                                    $('#emailForm')[0].reset();
+                                    $('#action_email').val('Update');
+                                    $('.modal-title').text('Change Email');
+                                    $('#button_action_email').val('update');
+                                    }else{
+                                        window.location.reload();
                                         }
-                                        else
-                                        {
-                                            $('#form_output_email').html(data.success);
-                                            if(data.success == '<div class="alert alert-danger">Wrong Password !</div>'){
-                                            $('#emailForm')[0].reset();
-                                            $('#action_email').val('Update');
-                                            $('.modal-title').text('Change Email');
-                                            $('#button_action_email').val('update');
-                                            }else{
-                                                window.location.reload();
-                                                }
 
-                                         }
-                                       
-                                    }
-                                        })
-                                });
+                                 }
+                               
+                            }
+                                })
+                        });
 
 
  $('#email').blur(function(){
@@ -433,41 +439,83 @@
       
     });
 
- var $errorMsg =  $('<span id="form_output_password">Passwords do not match.</span>');
-  function checkMatchingPasswords(){
+var $errorMsg =  $('<font color="red">Passwords do not match.</font>');
+function checkMatchingPasswords(){
+    
+        if( $('#new_password').val() != $('#confirm_password').val() ){
+             $('#change_password').attr("disabled", "disabled");
+            $errorMsg.insertAfter($('#confirm_password'));
+        }
+}
+
+function resetPasswordError(){
+    $("#change_password").removeAttr("disabled");
+    var $errorCont = $errorMsg;
+    if($errorCont.length > 0){
+        $errorCont.remove();
+    }  
+}
+
+$("#new_password, #confirm_password")
+     .on("keydown", function(e){
+        /* only check when the tab or enter keys are pressed
+         * to prevent the method from being called needlessly  */
+        if(e.keyCode == 13 || e.keyCode == 9) {
+            checkMatchingPasswords();
+        }
+     })
+     .on("blur", function(){                    
+        // also check when the element looses focus (clicks somewhere else)
+        checkMatchingPasswords();
+    })
+    .on("focus", function(){
+        // reset the error message when they go to make a change
+        resetPasswordError();
+    })
+
+   $('#passwordForm').on('submit', function(event){
+                        
+    event.preventDefault();
+    var form_data = new FormData(this);
+    $.ajax({
+
+        url:"{{ route('admin.password') }}",
+        method:"POST",
+        data:form_data,
+        dataType:"json",
+        processData: false,
+        contentType:false,
+        success:function(data)
+        {
+
+               if(data.error.length > 0)
+            {
+                var error_html = '';
+                for(var count = 0; count < data.error.length; count++)
+                {
+                    error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
+                }
+                $('#form_output_password').html(error_html);
+            }
+            else
+            {
+                $('#form_output_password').html(data.success);
+                if(data.success == '<div class="alert alert-danger">Wrong Old Password !</div>'){
+                $('#passwordForm')[0].reset();
+                $('#change_password').val('Change');
+                $('#button_action_password').val('Change');
+                }else{
+                    window.location.replace("/login/logout");
+                    }
+
+             }
+               
             
-                if( $('#new_password').val() != $('#confirm_password').val() ){
-                     $('#change_password').attr("disabled", "disabled");
-                    $errorMsg.insertAfter($('#confirm_password'));
-                }
         }
-
-    function resetPasswordError(){
-            $("#change_password").removeAttr("disabled");
-            var $errorCont = $("#form_output_password");
-            if($errorCont.length > 0){
-                $errorCont.remove();
-            }  
-        }
-
-    $("#new_password, #confirm_password")
-             .on("keydown", function(e){
-                /* only check when the tab or enter keys are pressed
-                 * to prevent the method from being called needlessly  */
-                if(e.keyCode == 13 || e.keyCode == 9) {
-                    checkMatchingPasswords();
-                }
-             })
-             .on("blur", function(){                    
-                // also check when the element looses focus (clicks somewhere else)
-                checkMatchingPasswords();
             })
-            .on("focus", function(){
-                // reset the error message when they go to make a change
-                resetPasswordError();
-            })
+    });
 
- 	 });
+     });
  </script>
 <script>
 	$('.form_date').datetimepicker({

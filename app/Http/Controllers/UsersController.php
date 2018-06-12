@@ -124,7 +124,7 @@ class UsersController extends Controller
                 $users->photo=$name;
     
                $users->save();
-                $success_output = '<div class="alert alert-success">Data Inserted</div>';
+                $success_output = '<div class="alert alert-success">Profile Picture Updated</div>';
             }
         
         }
@@ -234,7 +234,7 @@ class UsersController extends Controller
               $confirmpassword = $request->get('password');
               if(Hash::check($confirmpassword,$password)){
                 $users->email = $request->get('email');
-                dd($users);
+                $users->save();
                $success_output = '<div class="alert alert-success">Email is Changed</div>';
               
               }else{
@@ -257,6 +257,56 @@ class UsersController extends Controller
     }
     
 
+    function changePassword(Request $request)
+    {
+         
+           $validation = Validator::make($request->all(),[
+         
+         'old_password'=>'required',
+         'new_password'=>'required',
+         'confirm_password'=>'required'
+
+        ]);
+          $error_array = array();
+        $success_output='';
+        if ($validation->fails())
+        {
+            foreach($validation->messages()->getMessages() as  $field_name=>$messages) 
+            {
+                $error_array[] = $messages;
+            }
+        }
+        else 
+        {   
+           
+            if($request->get('button_action_password')=="Change")
+               
+            {
+             $users = Users::find($request->get('users_id_password'));
+              $password = $users->password;
+              $confirmpassword = $request->get('old_password');
+              if(Hash::check($confirmpassword,$password)){
+                $users->password = $request->get('new_password');
+               $users->save();
+               $success_output = '<div class="alert alert-success">Password is Changed</div>';
+              
+              }else{
+              $success_output = '<div class="alert alert-danger">Wrong Old Password !</div>';
+            }
+            $success_output;
+          }
+               
+        
+        }
+        $output = array(
+             'error' => $error_array,
+            'success'=> $success_output,
+   
+        );
+
+        echo json_encode($output);
+        
+    }
     /**
      * Display the specified resource.
      *

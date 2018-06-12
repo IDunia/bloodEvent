@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('users.landing');
 });
 
 Route::get('/admin/users','UsersController@index_admin')->name('users');
@@ -23,6 +23,7 @@ Route::post('/admin/profile/upload','UsersController@upload_picture')->name('adm
 Route::post('/admin/profile/update','UsersController@updateProfile')->name('admin.update');
 Route::post('/checkEmail','UsersController@checkEmail')->name('checkEmail');
 Route::post('/changeEmail','UsersController@changeEmail')->name('admin.email');
+Route::post('/changePassword','UsersController@changePassword')->name('admin.password');
 
 
 Route::get('/admin','DashboardController@index')->name('dashboard');

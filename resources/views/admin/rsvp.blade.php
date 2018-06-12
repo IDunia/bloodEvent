@@ -106,7 +106,7 @@
                                     {"data":"first_name"},
                                     {"data":"surname"},
                                     {"data":"status"},
-                                    {"data":"action"}
+                                    {"data":"action",orderable:false,searchable:false}
                                    
                                    
                                 ]

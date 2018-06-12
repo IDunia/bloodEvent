@@ -2,6 +2,12 @@
 <head>
 	</head>
 	<body>
-		test user
-	</body>
+
+	@extends('layouts.navbar_user')
+
+
+@section('content')
+
+@endsection
+</body>
 </html>

@@ -206,7 +206,7 @@ class UsersController extends Controller
             }
         }
     } 
-
+ 
     function changeEmail(Request $request)
     {
         $validation = Validator::make($request->all(),[
@@ -313,10 +313,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -324,11 +321,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
+   
     /**
      * Update the specified resource in storage.
      *

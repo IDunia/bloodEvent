@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 use App\Users;
 use Illuminate\Http\Request;
-
+use DB;
 use Validator;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     function index()
@@ -13,6 +14,10 @@ class LoginController extends Controller
     	return view('login');
     }
 
+    function registerPage()
+    {
+        return view('register');
+    }
     function checkLogin(Request $request)
     {
 
@@ -41,7 +46,7 @@ class LoginController extends Controller
     	}
     	else
     	{
-    		return back()->with('error','Wrong login detail');
+    		return back()->with('error','Wrong Username and Password !');
     	}
 
     }
@@ -57,4 +62,20 @@ class LoginController extends Controller
 	   	Auth::logout();
     	return redirect('login');
     }
+
+     public function register(Request $request)
+    {
+        $users = new Users([
+                    'email' => $request->get('email'),
+                    'password'=> $request->get('password'),
+                    'role'=>$request->get('role'),
+                    'first_name'=>$request->get('first_name'),
+                    'surname'=>$request->get('surname')
+
+                ]);
+        $users->save();
+                return  back()->with('error','Account Created !');
+    }
+
+     
 }

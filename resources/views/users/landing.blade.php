@@ -72,7 +72,7 @@
         <div class="col-md-8 ml-auto mr-auto">
           <div class="brand">
             <h1 class="title">Join Us to Save Lives !</h1>
-            <button class="btn btn-white btn-raised btn-round btn-lg " onclick="location.href='/login';" >Get Started</button>
+            <button class="btn btn-white btn-raised btn-round btn-lg " onclick="location.href='/register';" >Get Started</button>
           </div>
         </div>
       </div>

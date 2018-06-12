@@ -21,7 +21,7 @@
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate ">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           Blood Event </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
        <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a href="#pablo" class="nav-link " >
+                    <a href="/home" class="nav-link " >
                      <i class="material-icons">
             apps</i> Browse Event
                     </a>
@@ -56,7 +56,7 @@
                       <a href="{{route('logout')}}" class="dropdown-item">Sign out</a>
                     </div>
                   </li>
-                
+
                 @else
                  <li class="nav-item">
                     <a href="/login" class="nav-link " >

@@ -23,7 +23,7 @@ class UsersController extends Controller
 
     public function index_user()
     {
-        return view('users.users');
+        return view('users.home');
     }
     
     public function getdata()

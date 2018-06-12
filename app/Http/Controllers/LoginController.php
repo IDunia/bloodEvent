@@ -34,7 +34,7 @@ class LoginController extends Controller
 
             if($role == 'User'){
 
-            return view('users.users');
+            return view('users.home');
                 }else{
                 return view('admin.dashboard');
             }   

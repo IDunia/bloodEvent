@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -18,54 +18,62 @@
 </head>
 @section('navbar')
   <body class="index-page sidebar-collapse">
-   <nav class="navbar navbar-expand-lg bg-red">
-            <div class="container">
-              <div class="navbar-translate">
-                <a class="navbar-brand" href="#">Blood Event</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                  <span class="navbar-toggler-icon"></span>
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              </div>
-              <div class="collapse navbar-collapse">
+    <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate ">
+        <a class="navbar-brand" href="#">
+          Blood Event </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+       <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item" >
-                    <a href="#pablo" class="btn btn-rose btn-raised btn-round">
-                      <i class="material-icons">home</i> Home
-                    </a>
-                  </li>
                   <li class="nav-item">
                     <a href="#pablo" class="nav-link " >
                      <i class="material-icons">
-                    how_to_reg</i> Sign In
+            apps</i> Browse Event
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="#pablo" class="nav-link">
-                      <i class="material-icons">account_circle</i> Profile
+                @if(isset(Auth::user()->email))
+               
+                   <li class="dropdown button-container nav-item iframe-extern" >
+                    
+                   <a href="" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown" rel="tooltip" title="" data-placement="top" data-original-title="{{Auth::user()->first_name}} {{Auth::user()->surname}}">
+                      <div class="profile-photo-small">
+                        <img src="./images/{{Auth::user()->photo}}" alt="Circle Image" class="rounded-circle img-fluid">  
+                      </div>
+
                     </a>
+                    
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                      <h6 class="dropdown-header">Account Information</h6>
+                      <a href="#pablo" class="dropdown-item">My Profile</a>
+                      <a href="#pablo" class="dropdown-item">My Cards</a>
+                      <a href="{{route('logout')}}" class="dropdown-item">Sign out</a>
+                    </div>
                   </li>
                 
+                @else
+                 <li class="nav-item">
+                    <a href="/login" class="nav-link " >
+                     <i class="material-icons">
+            how_to_reg</i> Sign In
+                    </a>
+                  </li>
+                  @endif
                 </ul>
-
               </div>
-            </div>
-          </nav>
-<div class="page-header header-filter clear-filter " data-parallax="true" style="background-image: url('./banner/banner3.png');">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
-          <div class="brand">
-            <h1 class="title">Join Us to Save Lives !</h1>
-            <button class="btn btn-white btn-raised btn-round btn-lg " onclick="location.href='/login';" >Get Started</button>
-          </div>
-        </div>
-      </div>
-       
     </div>
-  </div>
-   <footer class="footer" data-background-color="black">
+  </nav>
+
+@show
+@yield('content')
+      
+     <footer class="footer" data-background-color="black">
     <div class="container">
       <nav class="float-left">
         <ul>
@@ -84,9 +92,6 @@
           </li>
         </ul>
       </nav>
-@show
-@yield('content')
-      
       <div class="copyright float-right">
         &copy;
         <script>

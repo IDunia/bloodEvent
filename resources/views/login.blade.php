@@ -4,51 +4,47 @@
 		<script type="text/javascript">window.location.href="{{url('/admin')}}";</script>
 		@endif
 		@if(Auth::user()->role=='User')
-		<script type="text/javascript">window.location.href="{{url('/users')}}";</script>
+		<script type="text/javascript">window.location.href="{{url('/home')}}";</script>
 		@endif
 		@endif
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-	<title>Login</title>
-	 <link href="{!! asset('vendor/bootstrap/css/bootstrap.min.css')!!}" rel="stylesheet">
-	  <script src="{!! asset('vendor/jquery/jquery.min.js')!!}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{!! asset('vendor/bootstrap/js/bootstrap.min.js')!!}"></script>	
+	<title>Blood Event/ Login</title>	
 </head>
-<body>
-<div class="container box">
-		<h1 align="center">Login</h1>
-		<br>
-		
+<body class="signup-page">
+	@extends('layouts.navbar_user')
 
-		@if($message = Session::get('error'))
-		<div class="alert alert-danger alert-block">
-			<button type="button" class="close" data-dismiss="alert">X</button>
-			<strong>{{$message}}</strong>
-		@endif
-		@if(count($errors)>0)
-			<div class="alert alert-danger">
-				<ul>
-					@foreach($errors->all() as $error)
-					<li>{{$error}}</li>
-					@endforeach
-				</ul>
-		@endif
-		<form method="post" action="{{route('success.login')}}">
-		{{csrf_field()}}
-		<div class="form-group">
-			<label>Enter email</label>
-			<input type="email" name="email" class="form-control"/>
-		</div>
-		<div class="form-group">
-			<label>Enter Passowrd</label>
-			<input type="password" name="password" class="form-control"/>
-		</div>
-		<div class="form-group">
-			<input type="submit" name="login" class="btn btn-primary" value="login"/>
-		</div>
-		</form>
-	</div>	
-</body>
+
+@section('content')
+<div class="page-header header-filter"  style="background-image: url('./banner/login.jpg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+          <div class="card card-signup"> 
+            <img src="../banner/logo.png"  >
+           <div class="card-body">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="material-icons">mail</i>
+                        </span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Email...">
+                </div>  
+                                          
+             </div>
+             <div class="footer text-center">
+                               <button class="btn btn-rose btn-round btn-lg">Get Started !</button>
+                            </div>   
+          </div>
+        </div>
+      </div>
+    </div>
+    @endsection	
+  </div>
+	
+	</body>
+	
+
 </html>

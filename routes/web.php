@@ -51,4 +51,4 @@ Route::get('/error',function()
 	return abort(404);
 });
 
-Route::get('/users/','UsersController@index_user');
+Route::get('/home/','UsersController@index_user');

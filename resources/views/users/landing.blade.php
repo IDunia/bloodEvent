@@ -32,17 +32,36 @@
        <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a href="#pablo" class="nav-link " >
+                    <a href="/home" class="nav-link " >
                      <i class="material-icons">
             apps</i> Browse Event
                     </a>
                   </li>
+                   @if(isset(Auth::user()->email))
+                   <li class="dropdown button-container nav-item iframe-extern" >
+                   <a href="" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown" rel="tooltip" title="" data-placement="top" data-original-title="{{Auth::user()->first_name}} {{Auth::user()->surname}}">
+                      <div class="profile-photo-small">
+                        <img src="./images/{{Auth::user()->photo}}" alt="Circle Image" class="rounded-circle img-fluid">  
+                      </div>
+
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <h6 class="dropdown-header">Account Information</h6>
+                      <a href="#pablo" class="dropdown-item">My Profile</a>
+                      <a href="#pablo" class="dropdown-item">My Cards</a>
+                      <a href="{{route('logout')}}" class="dropdown-item">Sign out</a>
+                    </div>
+                  </li>
+                  
+                @else
                   <li class="nav-item">
                     <a href="/login" class="nav-link " >
                      <i class="material-icons">
             how_to_reg</i> Sign In
                     </a>
                   </li>
+                  @endif
                 </ul>
               </div>
     </div>

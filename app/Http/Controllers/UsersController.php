@@ -7,6 +7,7 @@ use App\Users;
 use DataTables;
 use DB;
 use Auth;
+use App\Event;
 use Illuminate\Support\Facades\Hash;
 class UsersController extends Controller
 {
@@ -23,7 +24,9 @@ class UsersController extends Controller
 
     public function index_user()
     {
-        return view('users.home');
+        $event=Event::all();
+      
+        return view('users.home',compact('event'));
     }
     
     public function getdata()

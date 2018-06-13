@@ -19,7 +19,7 @@
        
     </div>
   </div>
-   <div class="main main-raised">
+   <div class="main main-raised" style="background-color: #eaeff7">
     <div class="section section-basic">
       <div class="container">
 	<div class="alert alert-danger">
@@ -31,31 +31,39 @@
 			<div class="section section-blog">
 				<div class="container">
 					<div class="row">
-						@for ($i = 0; $i < 5; $i++)
+						@foreach($event as $event)
 						<div class="col-md-4">
                     		<div class="card card-blog">
 		                        <div class="card-header card-header-image">
-		                            <a href="#pablo">
-		                                <img src="../banner/logo.png" alt="" >
-		                            </a>
+		                            
+		                                <img  class="img img-raised" src="/images/{{$event->photo}}"  height=30%>
+		                            
 		                        </div>
 		                        <div class="card-body">
-		                            <h6 class="card-category text-rose">Trends</h6>
+		                        	@if ($event->type == 'seminar')
+		                            <h6 class="card-category text-info">{{$event->type}}</h6>
+		                            @else
+		                            <h6 class="card-category text-danger">{{$event->type}}</h6>
+		                            @endif
 		                            <h4 class="card-title">
-		                                <a href="#pablo">Event Title</a>
+		                                <a href="#pablo">{{$event->name}}</a>
 		                            </h4>
 		                            <p class="card-description">
-		                                Event Description
+		                                 {{$event->date_time}}
 		                            </p>
+		                            <p class="card-description">
+									{{$event->place}}
+		                            </p>
+		                            <p class="card-description"> <a href ="" class="btn btn-rose  ">Read More..</a></p>
 		                        </div>
                     		</div>
                			 </div>
-               			 @endfor
+               			 @endforeach
 					</div>
 				</div>
 			</div>
 		
-       
+        
       </div>
     </div>
   </div>

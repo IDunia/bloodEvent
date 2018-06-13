@@ -7,6 +7,7 @@ use Validator;
 use DataTables;
 use App\Event;
 use File;
+use Hashids\Hashids;
 class EventController extends Controller
 {
     /**
@@ -19,6 +20,18 @@ class EventController extends Controller
           $event=Event::all();
         return view('admin.event');
     }
+    
+    public function index_user()
+    {
+        $event=Event::all();
+         $hashids = new Hashids('', 10); // pad to length 10
+        $id =$hashids->encode(1); // VolejRejNm
+
+        return view('users.home',compact('event'));
+     
+    }
+
+
      public function getdata()
     {
 
@@ -144,6 +157,7 @@ class EventController extends Controller
             }
         }
 
+         
     /**
      * Show the form for creating a new resource.
      *
@@ -173,7 +187,15 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+       
+         if ($event = Event::where('id', $id)->first()) {
+      
+         return view('users.event',compact('event','id'));
+            }else{
+                 return abort('404');   
+            }
+
+    
     }
 
     /**
@@ -184,7 +206,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+         
     }
 
     /**

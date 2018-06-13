@@ -7,6 +7,7 @@ use DB;
 use Validator;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Event;
 class LoginController extends Controller
 {
     function index()
@@ -38,8 +39,8 @@ class LoginController extends Controller
             $role =Auth::user()->role;
 
             if($role == 'User'){
-
-            return view('users.home');
+            $event= Event::all();
+            return view('users.home',compact('event'));
                 }else{
                 return view('admin.dashboard');
             }   

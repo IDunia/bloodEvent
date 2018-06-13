@@ -33,6 +33,8 @@ Route::get('event/getdata','EventController@getdata')->name('event.getdata');
 Route::post('event/postdata','EventController@postdata')->name('insert_event.postdata');
 Route::get('event/fetchdata', 'EventController@fetchdata')->name('eventdata.fetchdata');
 Route::get('event/removedata', 'EventController@removedata')->name('eventdata.removedata');
+Route::get('/home/','EventController@index_user');
+Route::resource('event','EventController');
 
 Route::get('/login','LoginController@index');
 Route::get('/register','LoginController@registerPage');
@@ -54,4 +56,3 @@ Route::get('/error',function()
 	return abort(404);
 });
 
-Route::get('/home/','UsersController@index_user');

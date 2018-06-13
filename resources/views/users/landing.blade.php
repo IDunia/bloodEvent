@@ -66,7 +66,7 @@
               </div>
     </div>
   </nav>
-<div class="page-header header-filter clear-filter " data-parallax="true" style="background-image: url('./banner/banner3.png');">
+<div class="page-header  clear-filter " data-parallax="true" style="background-image: url('./banner/banner3.png');">
     <div class="container">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">

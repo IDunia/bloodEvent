@@ -14,10 +14,15 @@
   <link href="{!! asset('vendor/font-awesome/css/font-awesome.min.css')!!}" rel="stylesheet" type="text/css">
   <!-- CSS Files --> 
   <link href="{!! asset('css/material-kit.css?v=2.0.3')!!}" rel="stylesheet" type="text/css">
+   <script  src="{!! asset('vendor/jquery/dist/jquery.min.js')!!}"></script>
+  <script  src="{!! asset('js/popper.min.js')!!}"></script>
+   <script  src="{!! asset('js/bootstrap-material-design.min.js')!!}"></script>
+    <script  src="{!! asset('js/material-kit.js?v=2.0.3')!!}"></script>
 
 </head>
-@section('navbar')
-  <body class="index-page sidebar-collapse">
+
+  <body>
+    @section('navbar')
     <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
     <div class="container">
       <div class="navbar-translate ">
@@ -43,7 +48,7 @@
                     
                    <a href="" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown" rel="tooltip" title="" data-placement="top" data-original-title="{{Auth::user()->first_name}} {{Auth::user()->surname}}">
                       <div class="profile-photo-small">
-                        <img src="./images/{{Auth::user()->photo}}" alt="Circle Image" class="rounded-circle img-fluid">  
+                        <img src="/images/{{Auth::user()->photo}}" alt="Circle Image" class="rounded-circle img-fluid">  
                       </div>
 
                     </a>
@@ -100,9 +105,6 @@
     </div>
   </footer>
   <!--   Core JS Files   -->
-  <script  src="{!! asset('vendor/jquery/dist/jquery.min.js')!!}"></script>
-  <script  src="{!! asset('js/popper.min.js')!!}"></script>
-   <script  src="{!! asset('js/bootstrap-material-design.min.js')!!}"></script>
-    <script  src="{!! asset('js/material-kit.js?v=2.0.3')!!}"></script>
+ 
   </body>
 </html>

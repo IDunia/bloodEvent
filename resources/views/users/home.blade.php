@@ -1,7 +1,7 @@
 <html>
 <head>
 	</head>
-	<body>
+	<body class="profile-page sidebar-collapse">
 
 	@extends('layouts.navbar_user')
 
@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <div class="brand">
-            <h2 class="title">Blood Donation will cost you nothing but it will save a life!</h1>
+            <h1 class="title">Blood Donation will cost you nothing but it will save a life!</h1>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
 		                            <p class="card-description">
 									{{$event->place}}
 		                            </p>
-		                            <p class="card-description"> <a href ="" class="btn btn-rose  ">Read More..</a></p>
+		                            <p class="card-description"> <a href ="{{action('EventController@show', $event['id'])}}" class="btn btn-rose  ">Read More..</a></p>
 		                        </div>
                     		</div>
                			 </div>

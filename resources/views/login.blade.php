@@ -54,6 +54,7 @@
              		</div>
              <br>
 		             <div class="footer text-center">
+		             	
 		                 <input type="submit" class="btn btn-rose btn-round btn-lg" name="login" value="Login !" />
 		                 <p>Not Registered yet ? <a href="/register" class="text-rose" >Register Here !</a></p> 
 		                 <p > </p>

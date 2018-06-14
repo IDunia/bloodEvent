@@ -7,7 +7,9 @@ use Validator;
 use DataTables;
 use App\Event;
 use File;
-use Hashids\Hashids;
+use App\rsvp;
+use Illuminate\Support\Facades\DB;
+use Auth;
 class EventController extends Controller
 {
     /**
@@ -24,9 +26,7 @@ class EventController extends Controller
     public function index_user()
     {
         $event=Event::all();
-         $hashids = new Hashids('', 10); // pad to length 10
-        $id =$hashids->encode(1); // VolejRejNm
-
+        
         return view('users.home',compact('event'));
      
     }
@@ -176,7 +176,12 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rsvp = new rsvp();
+        $rsvp->event_id = $request->get('id');
+        $rsvp->user_id = Auth::user()->id;
+        $rsvp->status = 'Not yet';
+        dd($rsvp);
+        return redirect('/home');
     }
 
     /**
@@ -186,11 +191,23 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        if(isset(Auth::user()->email)){
+            $coba =DB::table("rsvps")
+                    ->where('user_id',Auth::user()->id)
+                    ->count();
+
+        }else{
+            $coba = "false";
+        }
+         if ($event = Event::where('id', $id)->first() ) {
+        
+        
        
-         if ($event = Event::where('id', $id)->first()) {
-      
-         return view('users.event',compact('event','id'));
+        $data = DB::table("rsvps")
+                ->where('event_id',$event->id)
+                ->count();
+         return view('users.event',['event'=>$event,'data'=>$data,'coba'=>$coba]);
             }else{
                  return abort('404');   
             }

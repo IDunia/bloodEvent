@@ -89,6 +89,11 @@ class UsersController extends Controller
 
         return view('admin.profile');
     }
+    public function user_profile()
+    {
+
+        return view('users.profile');
+    }
 
     function upload_picture(Request $request)
     {
@@ -260,7 +265,7 @@ class UsersController extends Controller
            $validation = Validator::make($request->all(),[
          
          'old_password'=>'required',
-         'new_password'=>'required',
+         'new_password'=>'required|min:8',
          'confirm_password'=>'required'
 
         ]);

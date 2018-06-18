@@ -24,7 +24,7 @@ Route::post('/admin/profile/update','UsersController@updateProfile')->name('admi
 Route::post('/checkEmail','UsersController@checkEmail')->name('checkEmail');
 Route::post('/changeEmail','UsersController@changeEmail')->name('admin.email');
 Route::post('/changePassword','UsersController@changePassword')->name('admin.password');
-
+Route::get('/home/profile','UsersController@user_profile')->name('users.profile');
 
 Route::get('/admin','DashboardController@index')->name('dashboard');
 

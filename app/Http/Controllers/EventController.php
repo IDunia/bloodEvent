@@ -180,7 +180,7 @@ class EventController extends Controller
         $rsvp->event_id = $request->get('id');
         $rsvp->user_id = Auth::user()->id;
         $rsvp->status = 'Not yet';
-        dd($rsvp); 
+        $rsvp->save(); 
         return redirect('/home');
     }
 

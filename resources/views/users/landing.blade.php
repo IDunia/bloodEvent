@@ -48,7 +48,7 @@
 
                     <div class="dropdown-menu dropdown-menu-right">
                       <h6 class="dropdown-header">Account Information</h6>
-                      <a href="#pablo" class="dropdown-item">My Profile</a>
+                      <a href="{{route('users.profile')}}" class="dropdown-item">My Profile</a>
                       <a href="#pablo" class="dropdown-item">My Cards</a>
                       <a href="{{route('logout')}}" class="dropdown-item">Sign out</a>
                     </div>

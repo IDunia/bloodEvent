@@ -27,9 +27,11 @@
                     <div class="col-md-6 col-sm-6">
                         <h2 class="title">{{$event->name}} </h2>
                         @if ($event->type == 'seminar')
-		                            <h3 class="main-price text-info">{{$event->type}}</h3>
+                        			<span class="badge badge-info">{{$event->type}}</span>
+		                            
 		                            @else
-		                            <h3 class="main-price text-danger">{{$event->type}}</h3>
+		                            <span class="badge badge-danger">{{$event->type}}</span>
+		                            
 		                            @endif
                         
                         <div id="accordion" role="tablist">
@@ -72,17 +74,17 @@
                         <div class="row pull-left">
                         	
 							@if(isset(Auth::user()->email) && Auth::user()->role=='User' && $data > 0 && $coba > 0 )
-							<button class="btn btn-success btn-round disabled" ><i class="material-icons">assignment</i> You've Already Registered this Event !</button>
+							<button class="btn btn-success btn-round " disabled="disabled"><i class="material-icons">assignment</i> You've Already Registered this Event !</button>
 					
                         	@elseif(isset(Auth::user()->email) && Auth::user()->role=='User' )
 							<button type="submit" class="btn btn-rose btn-round " ><i class="material-icons">assignment</i> Register this Event !</button>
 
 							
 							@elseif(isset(Auth::user()->email) && Auth::user()->role=='Admin')
-							<button class="btn btn-warning btn-round disabled" ><i class="material-icons">assignment</i> Admin cannot register this event !</button>
+							<button class="btn btn-warning btn-round " disabled="disabled" ><i class="material-icons">assignment</i> Admin cannot register this event !</button>
 
 							@else
-							<button class="btn btn-rose btn-round disabled" ><i class="material-icons">assignment</i> Register This Event</button>
+							<button class="btn btn-rose btn-round" disabled="disabled" ><i class="material-icons">assignment</i> Register This Event</button>
 							<h5 class="text-danger">*You must login first if wanna register this event !</h5>
 						    @endif
 						 

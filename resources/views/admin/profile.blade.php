@@ -260,7 +260,7 @@
 	</div>
 </div>
 
-
+ 
  <script type="text/javascript">   
  	 $(document).ready(function(){
 
@@ -450,6 +450,7 @@ function checkMatchingPasswords(){
 
 function resetPasswordError(){
     $("#change_password").removeAttr("disabled");
+     $("#form_output_password").html("");
     var $errorCont = $errorMsg;
     if($errorCont.length > 0){
         $errorCont.remove();

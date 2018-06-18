@@ -18,7 +18,8 @@
   <script  src="{!! asset('js/popper.min.js')!!}"></script>
    <script  src="{!! asset('js/bootstrap-material-design.min.js')!!}"></script>
     <script  src="{!! asset('js/material-kit.js?v=2.0.3')!!}"></script>
-
+<script  src="{!! asset('js/moment.js')!!}"></script>
+<script  src="{!! asset('js/bootstrap-datetimepicker.js')!!}"></script>
 </head>
 
   <body>
@@ -56,7 +57,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
 
                       <h6 class="dropdown-header">Account Information</h6>
-                      <a href="#pablo" class="dropdown-item">My Profile</a>
+                      <a href="{{route('users.profile')}}" class="dropdown-item">My Profile</a>
                       <a href="#pablo" class="dropdown-item">My Cards</a>
                       <a href="{{route('logout')}}" class="dropdown-item">Sign out</a>
                     </div>

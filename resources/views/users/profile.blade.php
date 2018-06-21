@@ -40,6 +40,10 @@
                         </div>
                     </div>
                 </div>
+                 <div class="description text-center ">
+                    Total Points right now : <p class="text-primary">{{$points}}</p>
+                    <p class="text-danger">*Points will be counted if you've already RSVP'd</p>
+                </div>
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile-tabs">
@@ -50,6 +54,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#work" role="tab" data-toggle="tab">
                                         <i class="material-icons">people</i>Information
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#cards" role="tab" data-toggle="tab">
+                                        <i class="material-icons">credit_card</i> Card
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -98,7 +107,7 @@
                       </div>
                       <div class="form-group">
                         <label>Phone</label>
-                        <input type="number" class="form-control" id="phone" name="phone" value="{{Auth::user()->phone}}" placeholder="Not Assigned" maxlength="12">
+                        <input type="text" class="form-control"  id="phone" name="phone" value="{{Auth::user()->phone}}" placeholder="Not Assigned" maxlength="12" onkeypress="return /\d/.test(String.fromCharCode(((event||window.event).which||(event||window.event).which)));">
                       </div>
                     
                         <input type="hidden" name="users_id_info" id="users_id_info" value="{{Auth::user()->id}}" />
@@ -107,7 +116,51 @@
                     </form>
             
                 </div>
-                    
+                
+                <div class="tab-pane cards" id="cards">
+                        <div class="row">
+                          <div class="col-md-8 ml-auto mr-auto text-center"> <h2 class="title">List Attended Event</h2>
+                        <h5 class="description">History of Events that You've already RSVP'd </h5>
+                        
+                        </div>
+                      </div>
+
+                        <div class="row">
+                            @foreach($card as $card)
+                            <div class="col-md-4">
+                            <div class="card card-profile card-plain">
+                                <div class="card-header card-header-image">
+                                    <a href="#">
+                                        <img class="img" height=30% src="/images/{{$card->photo}}">
+                                    </a>
+                                </div>
+                                <div class="card-body ">
+                                    <h4 class="card-title">{{$card->name}}</h4>
+                                     @if ($card->type == 'seminar')
+                                    <span class="badge badge-info">Seminar</span>
+                                    
+                                    @else
+                                    <span class="badge badge-danger">Donation</span>
+                                    
+                                    @endif
+                                    
+                                </div>
+
+                                <div class="card-footer">
+                                    <p class="card-description" >
+                                                Host {{$card->host}},  Location {{$card->place}} , RSVP at {{$card->updated_at}}
+                                    </p>
+                                </div>
+                            
+                            </div>
+                            
+                            
+                        </div>
+                    @endforeach
+                        </div>
+                    </div>
+                  
+
                   <div class="tab-pane connections" id="connections">
                     <h3 class="title">Change Password</h3>
                     <form  method="post" id="passwordForm">

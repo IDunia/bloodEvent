@@ -37,7 +37,7 @@
             apps</i> Browse Event
                     </a>
                   </li>
-                   @if(isset(Auth::user()->email))
+                   @if(isset(Auth::user()->email)  && Auth::user()->role == "User")
                    <li class="dropdown button-container nav-item iframe-extern" >
                    <a href="" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown" rel="tooltip" title="" data-placement="top" data-original-title="{{Auth::user()->first_name}} {{Auth::user()->surname}}">
                       <div class="profile-photo-small">
@@ -49,11 +49,25 @@
                     <div class="dropdown-menu dropdown-menu-right">
                       <h6 class="dropdown-header">Account Information</h6>
                       <a href="{{route('users.profile')}}" class="dropdown-item">My Profile</a>
-                      <a href="#pablo" class="dropdown-item">My Cards</a>
                       <a href="{{route('logout')}}" class="dropdown-item">Sign out</a>
                     </div>
                   </li>
-                  
+                 @elseif(isset(Auth::user()->email) && Auth::user()->role == "Admin")
+                 <li class="dropdown button-container nav-item iframe-extern" >
+                    
+                   <a href="" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown" rel="tooltip" title="" data-placement="bottom" data-original-title="{{Auth::user()->first_name}} {{Auth::user()->surname}}">
+                      <div class="profile-photo-small">
+                        <img src="/images/{{Auth::user()->photo}}" alt="Circle Image" class="rounded-circle img-fluid">  
+                      </div>
+
+                    </a>
+                    
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                      <h6 class="dropdown-header">Account Information</h6>
+                      <a href="{{route('logout')}}" class="dropdown-item">Sign out</a>
+                    </div>
+                  </li>  
                 @else
                   <li class="nav-item">
                     <a href="/login" class="nav-link " >

@@ -27,10 +27,10 @@
                     <div class="col-md-6 col-sm-6">
                         <h2 class="title">{{$event->name}} </h2>
                         @if ($event->type == 'seminar')
-                        			<span class="badge badge-info">{{$event->type}}</span>
+                        			<span class="badge badge-info">Seminar</span>
 		                            
 		                            @else
-		                            <span class="badge badge-danger">{{$event->type}}</span>
+		                            <span class="badge badge-danger">Donation/span>
 		                            
 		                            @endif
                         

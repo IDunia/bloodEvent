@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\Users;
+use App\card;
+use App\rsvp;
+use App\Event;
 use DataTables;
 use DB;
 use Auth;
@@ -91,8 +94,23 @@ class UsersController extends Controller
     }
     public function user_profile()
     {
+         $card = DB::table('cards')
+        ->join('rsvps','cards.rsvp_id','=','rsvps.id')
+        ->join('users','rsvps.user_id','=','users.id')
+        ->join('events','rsvps.event_id','=','events.id')
+        ->select( 'cards.id' , 'events.name', 'events.type', 'events.place', 'events.host','cards.points','events.photo','rsvps.updated_at')
+        ->where('rsvps.user_id',Auth::user()->id)
+        ->get();
 
-        return view('users.profile');
+        $points = DB::table('cards')
+        ->join('rsvps','cards.rsvp_id','=','rsvps.id')
+        ->join('users','rsvps.user_id','=','users.id')
+        ->join('events','rsvps.event_id','=','events.id')
+        ->select( 'cards.id' , 'cards.rsvp_id','events.name', 'users.email', 'users.first_name', 'cards.points')
+        ->where('rsvps.user_id',Auth::user()->id)
+        ->sum('cards.points');
+
+        return view('users.profile',['card'=>$card,'points'=>$points]);
     }
 
     function upload_picture(Request $request)

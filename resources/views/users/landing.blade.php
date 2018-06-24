@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
- 
+ <link rel="shortcut icon" href="{{{ asset('banner/icon.png') }}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
    Blood Event

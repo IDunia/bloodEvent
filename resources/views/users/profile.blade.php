@@ -1,7 +1,7 @@
 <html>
 @if(isset(Auth::user()->email) && Auth::user()->role == 'User')
 <head>
-   
+   <link rel="shortcut icon" href="{{{ asset('banner/icon.png') }}}">
 	</head>
 	<body class="profile-page">
 

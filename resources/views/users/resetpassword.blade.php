@@ -10,6 +10,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="{{{ asset('banner/icon.png') }}}">
 	<title>Blood Event/ Reset Password</title>	
 </head>
 <body class="signup-page">

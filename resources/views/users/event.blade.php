@@ -1,5 +1,10 @@
 <html>
 <head>
+ 
+ 
+ 
+   <link rel="shortcut icon" href="{{{ asset('banner/icon.png') }}}">
+    <title>Blood Event/ Event</title>
 	</head>
 	<body class="product-page">
 

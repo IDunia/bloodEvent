@@ -3,6 +3,7 @@
 <head>
 	<meta   charset="UTF-8">
 	<title>Event</title>
+    <link rel="shortcut icon" href="{{{ asset('banner/icon.png') }}}">
 </head>
 <body>
 @extends('layouts.navbar_admin')

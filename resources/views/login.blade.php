@@ -9,6 +9,7 @@
 		@endif
 <html lang="en">
 <head>
+	<link rel="shortcut icon" href="{{{ asset('banner/icon.png') }}}">
 <meta charset="UTF-8">
 	<title>Blood Event/ Login</title>	
 </head>

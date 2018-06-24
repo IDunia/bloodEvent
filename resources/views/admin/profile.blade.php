@@ -1,3 +1,4 @@
+@if(isset(Auth::user()->email) && (Auth::user()->role == 'Admin')) 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -533,4 +534,7 @@ $("#new_password, #confirm_password")
 
 @endsection
 </body>
+ @else
+                <script> window.location= "/error";</script>
+  @endif
 </html>

@@ -43,6 +43,8 @@ Route::get('/login/success','LoginController@successlogin');
 Route::get('/login/logout','LoginController@logout')->name('logout');
 Route::post('/login/','LoginController@checkEmail')->name('login.checkEmail');
 Route::post('/home','LoginController@register')->name('register');
+Route::get('/reset','LoginController@reset');
+Route::post('/reset/success','LoginController@resetpassword')->name('resetpassword');
 
 Route::get('/admin/rsvp','rsvpController@index')->name('rsvp'); 
 Route::get('rsvp/getdata','rsvpController@getdata')->name('rsvp.getdata');

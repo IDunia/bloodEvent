@@ -10,6 +10,7 @@ use File;
 use App\rsvp;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Intervention\Image\ImageManagerStatic as Image;
 class EventController extends Controller
 {
     /**
@@ -76,7 +77,7 @@ class EventController extends Controller
              {
             $file = $request->file('photo');
             $name=rand().$file->getClientOriginalName();
-            $file->move(public_path().'/images/', $name);
+            Image::make($file->getRealPath())->resize('800', '537')->save(public_path('images/' .$name));
              }else{
                 $name="Unassigned.jpg";
              }
@@ -105,11 +106,11 @@ class EventController extends Controller
                     $eventPhoto= public_path("\images\{{$event->photo}}");
                     if(File::exists($eventPhoto))
                         {
-                        unlink($eventPhoto);
+                        File::delete($eventPhoto);
                         }
                     $file = $request->file('photo');
                     $name=rand().$file->getClientOriginalName();
-                    $file->move(public_path().'/images/', $name);
+                   Image::make($file->getRealPath())->resize('800', '537')->save(public_path('images/' .$name));
                  }else{
                   $name="Unassigned.jpg";  
                  }

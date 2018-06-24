@@ -11,6 +11,8 @@ use DataTables;
 use DB;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use File;
+use Intervention\Image\ImageManagerStatic as Image;
 class UsersController extends Controller
 {
     /**
@@ -135,11 +137,18 @@ class UsersController extends Controller
                
             {
                   $users = Users::find($request->get('users_id_upload'));
+                   $usersPhoto= public_path("\images\{{$users->photo}}");
                 if($request->hasfile('photo'))
              {
+               
+                    if(File::exists($usersPhoto) && $users->photo !== "Unassigned.jpg")
+                        {
+                        File::delete($usersPhoto);
+                        }
             $file = $request->file('photo');
             $name=rand().$file->getClientOriginalName();
-            $file->move(public_path().'/images/', $name);
+            Image::make($file->getRealPath())->resize('400', '400')->save(public_path('images/' .$name));
+
              }
                 $users->photo=$name;
     

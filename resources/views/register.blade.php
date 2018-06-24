@@ -72,8 +72,9 @@
 
                                    
              		</div>
-             <br>
+             
 		             <div class="footer text-center">
+		             	<br>
 		                 <input type="submit" class="btn btn-rose btn-round btn-lg" name="login" value="Create new Account !" id="login" />
 		                 <p>Already Have Account ? <a href="/login" class="text-rose" >Login  Here !</a></p> 
 		                 <p > </p>

@@ -22,13 +22,13 @@
    <div class="main main-raised" style="background-color: #eaeff7">
     <div class="section section-basic">
       <div class="container">
-	<div class="alert alert-danger">
-		<div class="alert-icon">
-            <i class="material-icons">event</i>
-          </div>       
-			<b>List Of Events !</b>
-        </div>
-			<div class="section section-blog">
+			<div class="alert alert-danger">
+				<div class="alert-icon">
+		            <i class="material-icons">event</i>
+		          </div>       
+					<b>List Of Events !</b>
+		        </div>
+			
 				<div class="container">
 					<div class="row">
 						@foreach($event as $event)
@@ -36,7 +36,7 @@
                     		<div class="card card-blog">
 		                        <div class="card-header card-header-image">
 		                            
-		                                <img  class="img img-raised" src="/images/{{$event->photo}}"  height=30%>
+		                                <img  class="img img-raised" src="/images/{{$event->photo}}"  >
 		                            
 		                        </div>
 		                        <div class="card-body">
@@ -61,7 +61,7 @@
                			 @endforeach
 					</div>
 				</div>
-			</div>
+			
 		
         
       </div>

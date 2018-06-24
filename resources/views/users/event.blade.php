@@ -30,7 +30,7 @@
                         			<span class="badge badge-info">Seminar</span>
 		                            
 		                            @else
-		                            <span class="badge badge-danger">Donation/span>
+		                            <span class="badge badge-danger">Donation</span>
 		                            
 		                            @endif
                         

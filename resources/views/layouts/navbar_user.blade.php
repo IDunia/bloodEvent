@@ -49,7 +49,7 @@
                     
                    <a href="" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown" rel="tooltip" title="" data-placement="top" data-original-title="{{Auth::user()->first_name}} {{Auth::user()->surname}}">
                       <div class="profile-photo-small">
-                        <img src="/images/{{Auth::user()->photo}}" alt="Circle Image" class="rounded-circle img-fluid">  
+                        <img src="/images/{{Auth::user()->photo}}" alt="Circle Image" class="rounded-circle img-fluid" >  
                       </div>
 
                     </a>

@@ -8,6 +8,7 @@ use Validator;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Event;
+use Mail;
 class LoginController extends Controller
 {
     function index()
@@ -52,6 +53,11 @@ class LoginController extends Controller
 
     }
 
+    function reset()
+    {
+        return view('users.resetpassword');
+    }
+
     function successlogin(Request $request)
     {
 
@@ -76,6 +82,33 @@ class LoginController extends Controller
                 ]);
         $users->save();
                 return  back()->with('error','Account Created !');
+    }
+
+    public function resetpassword(Request $request)
+    {
+       if($request->get('button_action_reset')=="update")
+               
+            {
+            $email = $request->get('email');
+            $users = Users::where('email', $email)->first();
+             $match = Users::where('email', $email)->get()->count();
+             if ($match > 0){
+             $newpassword  = str_random(8);
+            $users->password = $newpassword;
+              $data = array('first_name'=>$users->first_name,'surname'=>$users->surname,'password'=>$newpassword,'email'=>$email);
+                  Mail::send('email', $data, function($message) use ($users){
+                     $message->to($users->email)->subject
+                        ('Reset Password');
+                    $message->from('BloodEvent@gmail.com','BloodEvent');                
+                  });
+            $users->save();      
+            return  back()->with('success','Password has been reset ! Check Your Email');
+            }else{
+            return  back()->with('error','Wrong Email !'); 
+            }
+             
+            }
+
     }
 
      

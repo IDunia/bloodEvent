@@ -27,7 +27,7 @@
                                 <h6>{{Auth::user()->email}} </h6>
                                 <button class="btn btn-fab btn-primary btn-round" rel="tooltip" title="Change Email" id="change_email" name="add">
                                 <i class="material-icons">alternate_email</i>
-                            </button>
+                                 </button>
                             </div>
                         </div>
                         <div class="follow">

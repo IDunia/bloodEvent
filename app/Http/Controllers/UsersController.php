@@ -96,6 +96,7 @@ class UsersController extends Controller
     }
     public function user_profile()
     {
+        if(isset(Auth::user()->email) && Auth::user()->role == 'User'){
          $card = DB::table('cards')
         ->join('rsvps','cards.rsvp_id','=','rsvps.id')
         ->join('users','rsvps.user_id','=','users.id')
@@ -113,6 +114,9 @@ class UsersController extends Controller
         ->sum('cards.points');
 
         return view('users.profile',['card'=>$card,'points'=>$points]);
+        }else{
+            return redirect('/error');
+        }
     }
 
     function upload_picture(Request $request)

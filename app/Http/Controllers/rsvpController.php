@@ -29,7 +29,11 @@ class rsvpController extends Controller
         ->get();
         return Datatables::of($rsvp)
          ->addColumn('action', function($rsvp){
+                if($rsvp->status == "Yes"){
+                    return ' <a href="#" class="btn btn-sm btn-danger attend " id="'.$rsvp->id.'"><i class="fa fa-fw fa-check-circle "></i> Already Attended</a>';
+                }else{
                 return ' <a href="#" class="btn btn-sm btn-success attend " id="'.$rsvp->id.'"><i class="fa fa-fw fa-check-circle "></i> Attend</a>';
+                 }
             })
         ->make(true);
     }

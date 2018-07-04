@@ -155,10 +155,52 @@
                             </div>
                             
                             
+                            </div>
+                         @endforeach
                         </div>
-                    @endforeach
+                        @if ($pending->count() > 0)
+                         <div class="row">
+                          <div class="col-md-8 ml-auto mr-auto text-center"> <h2 class="title">List Pending Event</h2>
+                            <h5 class="description">History of Events that You've already registered ! </h5>
+                        
                         </div>
-                    </div>
+                      </div>
+
+                      <div class="row">
+                            @foreach($pending as $pending)
+                            <div class="col-md-4">
+                            <div class="card card-profile card-plain">
+                                <div class="card-header card-header-image">
+                                    <a href="#">
+                                        <img class="img" height=30% src="/images/{{$pending->photo}}">
+                                    </a>
+                                </div>
+                                <div class="card-body ">
+                                    <h4 class="card-title">{{$pending->name}}</h4>
+                                     @if ($pending->type == 'seminar')
+                                    <span class="badge badge-info">Seminar</span>
+                                    
+                                    @else
+                                    <span class="badge badge-danger">Donation</span>
+                                    
+                                    @endif
+                                    
+                                </div>
+
+                                <div class="card-footer">
+                                    <p class="card-description" >
+                                                Host {{$pending->host}},  Location {{$pending->place}} , Register at {{$pending->updated_at}}
+                                    </p>
+                                </div>
+                            
+                            </div>
+                            
+                            
+                            </div>
+                         @endforeach
+                        </div>
+                        @endif
+                </div>
                   
 
                   <div class="tab-pane connections" id="connections">

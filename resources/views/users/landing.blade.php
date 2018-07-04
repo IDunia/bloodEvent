@@ -93,6 +93,79 @@
        
     </div>
   </div>
+<br>
+  <div class="main main-raised">
+      <div class="section section-basic">
+        <div class="features-1">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h2 class="title">Why Donating Blood ? </h2>
+                        <h5 class="description">Blood donation not only makes the receiver’s life good but also helps the donor to maintain good health</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-success">
+                                <i class="material-icons">check_circle_outline</i>
+                            </div>
+                            <h4 class="info-title">Prevents Hemochromatosis</h4>
+                            <p class="text-justify">Health benefits of blood donation include reduced risk of hemochromatosis. Hemochromatosis is a health condition that arises due to excess absorption of iron by the body. This may be inherited or may be caused due to alcoholism, anemia or other disorders. Regular blood donation may help in reducing iron overload.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-success">
+                                <i class="material-icons">check_circle_outline</i>
+                            </div>
+                            <h4 class="info-title">Anti-cancer Benefits</h4>
+                            <p class="text-justify">Blood donation helps in lowering the risk of cancer.By donating blood the iron stores in the body are maintained at healthy levels. A reduction in the iron level in the body is linked with low cancer risk.</p>
+                        </div>
+                    </div>
+                     <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-success">
+                                <i class="material-icons">check_circle_outline</i>
+                            </div>
+                            <h4 class="info-title">Weight loss</h4>
+                            <p class="text-justify">Regular blood donation reduces the weight of the donors. This is helpful for those who are obese and are at a higher risk of cardiovascular diseases and other health disorders.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-success">
+                                <i class="material-icons">check_circle_outline</i>
+                            </div>
+                            <h4 class="info-title">Maintains Healthy Heart & Liver</h4>
+                            <p class="text-justify">Blood donation is beneficial in reducing the risk of heart and liver ailments caused by the iron overload in the body. Blood donation helps in maintaining the iron levels and reduces the risk of various health ailments.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info">
+                            <div class="icon icon-success">
+                                <i class="material-icons">check_circle_outline</i>
+                            </div>
+                            <h4 class="info-title">Stimulates Blood Cell Production</h4>
+                            <p class="text-justify">After donating blood, the body works to replenish the blood loss. This stimulates the production of new blood cells and, in turn, helps in maintaining good health.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card card-pricing card-raised bg-rose">
+                           <div class="card-body">
+                                <h3 class="card-title">So, what are you waiting for ? </h3>
+                                <h4 class="card-description">
+                                Join us and get all those benefits ! 
+                                </h1>
+                            </div>
+                            <div class="card-footer justify-content-center">
+                                <button class="btn btn-white btn-raised btn-round btn-lg " onclick="location.href='/register';" >Join Us !</button>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+     </div>
+  </div>
    <footer class="footer" data-background-color="black">
     <div class="container">
       <nav class="float-left">

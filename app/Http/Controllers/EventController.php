@@ -182,7 +182,7 @@ class EventController extends Controller
         $rsvp->user_id = Auth::user()->id;
         $rsvp->status = 'Not yet';
         $rsvp->save(); 
-        return redirect('/home');
+        return redirect('/home/profile');
     }
 
     /**
@@ -193,22 +193,17 @@ class EventController extends Controller
      */
     public function show($id)
     {   
-        if(isset(Auth::user()->email)){
-            $coba =DB::table("rsvps")
-                    ->where('user_id',Auth::user()->id)
-                    ->count();
-
-        }else{
-            $coba = "false";
-        }
+     
          if ($event = Event::where('id', $id)->first() ) {
-        
-        
-       
-        $data = DB::table("rsvps")
-                ->where('event_id',$event->id)
-                ->count();
-         return view('users.event',['event'=>$event,'data'=>$data,'coba'=>$coba]);
+            if(isset(Auth::user()->email)){
+            $data =DB::table("rsvps")
+                    ->where('user_id',Auth::user()->id)
+                    ->where('event_id',$event->id)
+                    ->count();
+            }else{
+                $data="null";
+            }
+         return view('users.event',['event'=>$event,'data'=>$data]);
             }else{
                  return abort('404');   
             }

@@ -105,6 +105,12 @@ class UsersController extends Controller
         ->where('rsvps.user_id',Auth::user()->id)
         ->get();
 
+           $pending = DB::table('rsvps')
+        ->join('events','rsvps.event_id','=','events.id')
+        ->where('rsvps.user_id',Auth::user()->id)
+        ->where('rsvps.status','Not yet')
+        ->get();
+
         $points = DB::table('cards')
         ->join('rsvps','cards.rsvp_id','=','rsvps.id')
         ->join('users','rsvps.user_id','=','users.id')
@@ -113,7 +119,7 @@ class UsersController extends Controller
         ->where('rsvps.user_id',Auth::user()->id)
         ->sum('cards.points');
 
-        return view('users.profile',['card'=>$card,'points'=>$points]);
+        return view('users.profile',['card'=>$card,'points'=>$points,'pending'=>$pending]);
         }else{
             return redirect('/error');
         }

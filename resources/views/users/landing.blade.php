@@ -104,6 +104,7 @@
                     </div>
                 </div>
                 <div class="row">
+                  
                     <div class="col-md-4">
                         <div class="info">
                             <div class="icon icon-success">
@@ -155,7 +156,7 @@
                                 <h3 class="card-title">So, what are you waiting for ? </h3>
                                 <h4 class="card-description">
                                 Join us and get all those benefits ! 
-                                </h1>
+                                </h4>
                             </div>
                             <div class="card-footer justify-content-center">
                                 <button class="btn btn-white btn-raised btn-round btn-lg " onclick="location.href='/register';" >Join Us !</button>

@@ -98,7 +98,7 @@
       <nav class="float-left">
         <ul>
           <li>
-            Connect with us
+            Connect with us 
                </li>
           <li>
             <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Follow us on Instagram">

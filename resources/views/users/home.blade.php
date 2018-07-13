@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <div class="brand">
-            <h1 class="title">Blood Donation will cost you nothing but it will save a life!</h1>
+            <h2 class="title text-center" >Blood Donation will cost you nothing but it will save a life!</h1>
           </div>
         </div>
       </div>

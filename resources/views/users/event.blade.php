@@ -81,7 +81,7 @@
 							@if( isset(Auth::user()->email) && Auth::user()->role =="User" && $data > 0   )
 							<button class="btn btn-success btn-round " disabled="disabled"><i class="material-icons">assignment</i> You've Already Registered this Event !</button>
 					
-                        	@elseif( isset(Auth::user()->email)&& Auth::user()->role =="User" && $data < 0)
+                        	@elseif( isset(Auth::user()->email)&& Auth::user()->role =="User" && $data == "null")
 							<button type="submit" class="btn btn-rose btn-round " ><i class="material-icons">assignment</i> Register this Event !</button>
 
 							

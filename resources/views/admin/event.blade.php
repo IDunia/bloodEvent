@@ -213,8 +213,7 @@
                                 });
                                 $(document).on('click', '.edit', function(){
                                 var id = $(this).attr("id");
-                                if(confirm("Are you sure wanna edit this data ? , You need to input date and photo again !"))
-                                {
+                                
                                     $('#form_output').html('');
                                     $.ajax({
                                         url:"{{route('eventdata.fetchdata')}}",
@@ -236,7 +235,7 @@
                                             $('#button_action').val('update');
                                         }
                                     })
-                                }
+                                
                             });
 
 
